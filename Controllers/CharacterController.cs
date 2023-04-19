@@ -13,10 +13,18 @@ namespace RestAPI_project.Controllers
     [Route("api/[controller]")] 
     public class CharacterController: ControllerBase
     {
-         private static List<Character> characters = new List<Character> {
-            new Character(),
-            new Character {Id = 1, Name = "Sam"}
-         };
+         // private static List<Character> characters = new List<Character> {
+         //    new Character(),
+         //    new Character {Id = 1, Name = "Sam"}
+         // };
+         // command + . to see the more actions
+         // Injecting new character service into the controller
+         private readonly ICharacterService _characterService ;
+         public CharacterController(ICharacterService characterService)
+         {
+            _characterService = characterService;
+            
+         }
          // enables us to send specific HTTP status codes back to the client
          // Character/GetAll => to ignore duplication for Get  
         [HttpGet("GetAll")]
@@ -25,7 +33,7 @@ namespace RestAPI_project.Controllers
          {
             // IActionResult return type is approrpriate when multiple ActionResult return types are
             // possible : ex. BadRequest, NotFound,.. OkObjectResult(200)
-            return Ok(characters);
+            return Ok(_characterService.GetAllCharacters());
          }
 
          [HttpGet("{id}")]
@@ -45,7 +53,7 @@ namespace RestAPI_project.Controllers
          {
             // add charcter in the list 
 
-            characters.Add(newCharacter);
+            characters.Add(newCharacterService characterService);
             return Ok(characters );
          }
     }
