@@ -1,3 +1,4 @@
+global using RestAPI_project.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
