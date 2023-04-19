@@ -13,14 +13,40 @@ namespace RestAPI_project.Controllers
     [Route("api/[controller]")] 
     public class CharacterController: ControllerBase
     {
-         private static Character knight = new Character();
+         private static List<Character> characters = new List<Character> {
+            new Character(),
+            new Character {Id = 1, Name = "Sam"}
+         };
          // enables us to send specific HTTP status codes back to the client
-        [HttpGet]
-         public ActionResult <Character> Get()
+         // Character/GetAll => to ignore duplication for Get  
+        [HttpGet("GetAll")]
+        
+         public ActionResult<List<Character>> Get()
          {
             // IActionResult return type is approrpriate when multiple ActionResult return types are
             // possible : ex. BadRequest, NotFound,.. OkObjectResult(200)
-            return Ok(knight);
+            return Ok(characters);
+         }
+
+         [HttpGet("{id}")]
+
+         // pass the id inside the parameter
+         public ActionResult<Character> GetSingle(int id)
+         {
+            // IActionResult return type is approrpriate when multiple ActionResult return types are
+            // possible : ex. BadRequest, NotFound,.. OkObjectResult(200)
+
+   
+            // FirstOrDefault: returns id if Id == id. Else, returns empty string
+            return Ok(characters.FirstOrDefault(c => c.Id == id ));
+         }
+         [HttpPost]
+         public ActionResult<List<Character>> AddCharacter (Character newCharacter)
+         {
+            // add charcter in the list 
+
+            characters.Add(newCharacter);
+            return Ok(characters );
          }
     }
 }
