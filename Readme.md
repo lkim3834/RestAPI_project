@@ -11,3 +11,12 @@ HTTP Request Methods ( defined )
 - POST (Create): submit an entity to the specified resource, often causing a change in state/side effects on the server (back-end)
 - PUT (Update): replaces all current representations of the target resource with the request payload
 - DELETE (delete): deletes the specified resource
+
+
+
+
+
+<structure for the web API>  
+
+       DTO          DTO        Model  
+Client -> Controller -> Service -> Database
