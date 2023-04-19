@@ -1,4 +1,5 @@
-global using RestAPI_project.Controllers;
+// set the models to global to use Character class
+global using RestAPI_project.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

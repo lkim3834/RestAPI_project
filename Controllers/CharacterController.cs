@@ -1,4 +1,4 @@
-global using RestAPI_project.Controllers;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace RestAPI_project.Controllers
          private static Character knight = new Character();
          // enables us to send specific HTTP status codes back to the client
         [HttpGet]
-         public IActionResult Get()
+         public ActionResult <Character> Get()
          {
             // IActionResult return type is approrpriate when multiple ActionResult return types are
             // possible : ex. BadRequest, NotFound,.. OkObjectResult(200)

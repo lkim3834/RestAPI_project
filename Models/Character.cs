@@ -1,10 +1,11 @@
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-// namespace RestAPI_project.Models
-// {
+
+namespace RestAPI_project.Models
+{
 
 
 public class Character{
@@ -17,4 +18,5 @@ public class Character{
     public int Intelligence {get; set;} = 10;
     public RpgClass Class {get; set;} = RpgClass.Knight;
 
+}
 }
